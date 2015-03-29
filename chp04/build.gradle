@@ -1,0 +1,49 @@
+apply plugin: 'scala'
+apply plugin: 'idea'
+apply plugin: 'eclipse-wtp'
+
+group = 'com.aia.chp04'
+archivesBaseName = 'fault-tolerance'
+version = '1.0-SNAPSHOT'
+
+repositories {
+	maven {
+		url 'http://repo.typesafe.com/typesafe/releases'
+	}
+	maven {
+		url 'http://repo.spray.io'
+	}	
+	mavenCentral()
+}
+
+apply from: 'dependencies.gradle'
+
+dependencies{
+	compile(
+		//-------------scala----------------
+		[group:'org.scala-lang', name:'scala-library', version:ver.scala_library],
+		//-------------akka-----------------
+		[group:'com.typesafe.akka', name:'akka-actor_'+scala_version, version:ver.akka],
+		[group:'com.typesafe.akka', name:'akka-slf4j_'+scala_version, version:ver.akka],
+		//-------------spring---------------
+		[group:'org.springframework', name:'spring-orm', version:ver.spring],
+		[group:'org.springframework', name:'spring-context', version:ver.spring],
+		[group:'org.springframework.data', name:'spring-data-jpa', version:ver.spring_data],		
+		//-------------hibernate------------
+		[group:'org.hibernate', name:'hibernate-entitymanager', version:ver.hibernate],
+		[group:'org.hibernate', name:'hibernate-validator', version:ver.hibernate_validator],
+		//-------------logging--------------
+		[group:'ch.qos.logback', name:'logback-classic', version:ver.logback],
+		//-------------misc-----------------
+		[group:'org.javassist', name:'javassist', version:ver.javassit],
+		[group:'org.jadira.usertype', name:'usertype.extended', version:ver.jadira],
+	)
+	
+	testCompile(
+		[group:'com.typesafe.akka', name:'akka-testkit_'+scala_version, version:ver.akka],
+		[group:'junit', name:'junit', version:ver.junit],
+		[group:'org.scalatest', name:'scalatest_'+scala_version, version:ver.scalatest],
+		[group:'org.springframework', name:'spring-test', version:ver.spring],
+		[group:'org.hsqldb', name:'hsqldb', version:ver.hsqldb],
+	) 
+}
