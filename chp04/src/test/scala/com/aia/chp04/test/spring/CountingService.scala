@@ -1,4 +1,4 @@
-package com.aia.chp04.test
+package com.aia.chp04.test.spring
 
 trait CountingService {
   

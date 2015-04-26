@@ -10,6 +10,9 @@ import com.typesafe.config.Config
 import com.typesafe.config.ConfigFactory
 import com.aia.chp04.config.spring.SpringExtension
 import com.aia.chp04.config.spring.SpringExtensionImpl
+import com.aia.chp04.actor.lifecycle.LifeCycleHooks
+import org.springframework.context.annotation.Scope
+import org.springframework.beans.factory.config.ConfigurableBeanFactory
 
 @Configuration
 @Lazy
@@ -30,6 +33,12 @@ class ApplicationConfig {
   @Bean
   def springExtension:SpringExtensionImpl = {
     SpringExtensionImpl(actorSystem)
+  }
+  
+  @Bean
+  @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+  def lifeCycleHooks: LifeCycleHooks = {
+    new LifeCycleHooks
   }
   
 

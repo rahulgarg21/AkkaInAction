@@ -1,4 +1,4 @@
-package com.aia.chp04.test
+package com.aia.chp04.test.spring
 
 import scala.concurrent.duration.DurationInt
 import scala.util.Failure
@@ -9,8 +9,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.aia.chp04.config.TestApplicationConfig
 import com.aia.chp04.config.spring.SpringExtensionImpl
-import com.aia.chp04.test.CountingActorProtocol.GetCount
-import com.aia.chp04.test.CountingActorProtocol.IncrementCount
+import com.aia.chp04.test.spring.CountingActorProtocol._
 
 import akka.actor.ActorRef
 import akka.actor.ActorSystem

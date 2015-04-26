@@ -1,7 +1,7 @@
-package com.aia.chp04.test
+package com.aia.chp04.test.spring
 
 import akka.actor.Actor
-import com.aia.chp04.test.CountingActorProtocol._
+import com.aia.chp04.test.spring.CountingActorProtocol._
 
 class CountingActor(val countingService:CountingService) extends Actor{
   
